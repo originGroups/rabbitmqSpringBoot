@@ -55,4 +55,16 @@ public class TestRabbitMQ {
     public void testFanout(){
         rabbitTemplate.convertAndSend("logs","","publish/subscribe 广播模型");
     }
+
+    /**
+     * rabbitmq第四种模型:provider---exchange--routingKey--consumer1/consumer2/...
+     * 参数1:交换机名称
+     * 参数2:路由key
+     * 参数3:消息体
+     *
+     */
+    @Test
+    public void testRouting(){
+        rabbitTemplate.convertAndSend("directs","infos","发送routingKey为info的路由信息");
+    }
 }
