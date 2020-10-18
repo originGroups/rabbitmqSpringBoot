@@ -67,4 +67,18 @@ public class TestRabbitMQ {
     public void testRouting(){
         rabbitTemplate.convertAndSend("directs","infos","发送routingKey为info的路由信息");
     }
+
+    /**
+     * rabbitmq第五种模型:provider---exchange--topic--consumer1/consumer2/...
+     * topic-动态路由,也叫订阅模型
+     * 参数1:交换机名称
+     * 参数2:动态路由key
+     * 参数3:消息体
+     *
+     */
+    @Test
+    public void testTopic(){
+       // rabbitTemplate.convertAndSend("topics","user.save","基于 user.save 的动态路由信息");
+        rabbitTemplate.convertAndSend("topics","order","基于 order 的动态路由信息");
+    }
 }
