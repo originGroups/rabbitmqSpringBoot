@@ -30,4 +30,17 @@ public class TestRabbitMQ {
     public void testHello(){
         rabbitTemplate.convertAndSend("hello","hello world");
     }
+
+    /**
+     * rabbitmq第二种模型:provider---queue---consumer1/consumer2/...
+     * 参数1:队列名称
+     * 参数2:消息体
+     *
+     */
+    @Test
+    public void testWorkQueue(){
+        for (int i =1 ; i<= 10 ; i++){
+            rabbitTemplate.convertAndSend("work","workQueue工作队列模型"+i);
+        }
+    }
 }
