@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: rabbitmq-SpringBoot #为该服务命名
+  rabbitmq:
+    host:  10.15.0.9  #设置主机
+    port: 5672   #设置tcp通信端口
+    virtual-host:  /ems  #设置虚拟主机
+    username: ems  #设置虚拟主机访问权限 - 用户名
+    password: 123456  #设置虚拟主机访问权限 - 密码
