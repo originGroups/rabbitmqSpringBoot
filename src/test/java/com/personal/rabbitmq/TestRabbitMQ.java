@@ -24,7 +24,7 @@ public class TestRabbitMQ {
      * rabbitmq第一种模型:provider---queue---consumer
      * 参数1:队列名称
      * 参数2:消息体
-     * 注意!!!spring boot集成rabbitmq,队列的创建不是由生产者控制的,而已由消费者控制,当消费者启动的时候,如果该队列不存在那么就会创建
+     * 注意!!!spring boot集成rabbitmq,队列和交换机的创建不是由生产者控制的,而已由消费者控制,当消费者启动的时候,如果该队列或交换机不存在那么就会创建
      */
     @Test
     public void testHello(){
@@ -42,5 +42,17 @@ public class TestRabbitMQ {
         for (int i =1 ; i<= 10 ; i++){
             rabbitTemplate.convertAndSend("work","workQueue工作队列模型"+i);
         }
+    }
+
+    /**
+     * rabbitmq第三种模型:provider---exchange---consumer1/consumer2/...
+     * 参数1:交换机名称
+     * 参数2:广播模型的队列无意义
+     * 参数3:消息体
+     *
+     */
+    @Test
+    public void testFanout(){
+        rabbitTemplate.convertAndSend("logs","","publish/subscribe 广播模型");
     }
 }
